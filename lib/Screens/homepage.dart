@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:portpolio_web_site/Controller/home_controller.dart';
 import 'package:portpolio_web_site/constants.dart';
+import 'package:portpolio_web_site/onHover.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,7 +26,30 @@ class HomePage extends StatelessWidget {
 }
 
 class UiDesign extends StatelessWidget {
-  const UiDesign({Key? key}) : super(key: key);
+  final HomeController controller = Get.put(HomeController());
+  final List<String> allImages = [
+    "assets/images/app-ui.jpg",
+    "assets/images/Financial.jpg",
+    "assets/images/ui.jpg",
+    "assets/images/Financial.jpg",
+    "assets/images/ui.jpg",
+    "assets/images/app-ui.jpg",
+    "assets/images/app-ui.jpg",
+    "assets/images/Financial.jpg",
+    "assets/images/ui.jpg",
+    "assets/images/Financial.jpg",
+    "assets/images/ui.jpg",
+    "assets/images/app-ui.jpg",
+  ];
+  final List<String> complexUi = [
+    "assets/images/Financial.jpg",
+    "assets/images/ui.jpg",
+    "assets/images/Financial.jpg",
+    "assets/images/ui.jpg",
+    "assets/images/Financial.jpg",
+    "assets/images/ui.jpg",
+    "assets/images/app-ui.jpg",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +69,34 @@ class UiDesign extends StatelessWidget {
               child: bluePortion(size),
             ),
             Container(
-              decoration: BoxDecoration(
-                color: semiWhiteColor,
+              color: Colors.white,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: semiWhiteColor,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(200),
+                  ),
+                ),
+                child: semiwhitePortion(size),
               ),
-              child: whitePortion(size),
+            ),
+            Container(
+              color: backgroundColor,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(200),
+                    bottomRight: Radius.circular(200),
+                  ),
+                ),
+                child: whitePortion(size),
+              ),
+            ),
+            Container(
+              height: 500,
+              width: size.width,
+              color: backgroundColor,
             )
           ],
         ),
@@ -56,13 +106,317 @@ class UiDesign extends StatelessWidget {
 
   Widget whitePortion(Size size) {
     return Container(
-      height: size.height,
+      width: size.width,
+      child: Stack(
+        children: [
+          Positioned(
+            top: -450,
+            right: -150,
+            child: Container(
+              height: 700,
+              width: 700,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(700),
+                //color: Colors.white,
+                border: Border.all(color: semiWhiteColor, width: 100),
+              ),
+            ),
+          ),
+          Positioned(
+            left: 300,
+            top: 250,
+            child: Container(
+              width: size.width * 0.45,
+              child: Text(
+                "contact with me",
+                style: GoogleFonts.poppins(
+                  color: backgroundColor.withOpacity(0.05),
+                  fontSize: 170,
+                  fontWeight: FontWeight.w900,
+                  textStyle: TextStyle(
+                    height: 0.9,
+                    letterSpacing: 1,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -350,
+            right: size.width * 0.3,
+            child: Container(
+              height: 700,
+              width: 700,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(700),
+                //color: Colors.white,
+                border: Border.all(color: backgroundColor, width: 100),
+              ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 500, left: 450, bottom: 270),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(color: backgroundColor, width: 10),
+                      ),
+                    ),
+                    Text(
+                      "contact me",
+                      style: GoogleFonts.poppins(
+                          color: backgroundColor,
+                          fontSize: 50,
+                          fontWeight: FontWeight.w800),
+                    ),
+                    Container(
+                      width: size.width * 0.2,
+                      child: Text(
+                        "this is my personal information and all the information are correct. Here I also descuss about my projects.",
+                        style: GoogleFonts.poppins(
+                            color: Colors.black.withOpacity(0.7),
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.call,
+                            color: backgroundColor,
+                            size: 20,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "+880 1677696277",
+                            style: GoogleFonts.poppins(
+                                color: Colors.teal,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            color: backgroundColor,
+                            size: 20,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Barura, Cumilla, Bangladesh",
+                            style: GoogleFonts.poppins(
+                                color: Colors.teal,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.mail_outline,
+                            color: backgroundColor,
+                            size: 20,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "mehedi05739@gmail.com",
+                            style: GoogleFonts.poppins(
+                                color: Colors.teal,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                Container(
+                  // height: 400,
+                  width: size.width * 0.3,
+                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        offset: Offset(5, 5),
+                        blurRadius: 20,
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: backgroundColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: TextField(
+                          style: GoogleFonts.poppins(
+                            color: backgroundColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Email",
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 20),
+                            hintStyle: GoogleFonts.poppins(
+                              color: backgroundColor.withOpacity(0.5),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: backgroundColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: TextField(
+                          style: GoogleFonts.poppins(
+                            color: backgroundColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Name",
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 20),
+                            hintStyle: GoogleFonts.poppins(
+                              color: backgroundColor.withOpacity(0.5),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: backgroundColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: TextField(
+                          maxLines: 5,
+                          style: GoogleFonts.poppins(
+                            color: backgroundColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: "Message",
+                            contentPadding: EdgeInsets.symmetric(
+                                horizontal: 30, vertical: 20),
+                            hintStyle: GoogleFonts.poppins(
+                              color: backgroundColor.withOpacity(0.5),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      RaisedButton(
+                        onPressed: () {},
+                        color: backgroundColor,
+                        textColor: Colors.white,
+                        elevation: 5,
+                        hoverElevation: 15,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: size.width * 0.1, vertical: 20),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18.0),
+                        ),
+                        child: Text(
+                          "send",
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget semiwhitePortion(Size size) {
+    return Container(
+      // height: size.height,
       width: size.width,
       child: Stack(
         children: [
           Positioned(
             top: -450,
             right: 150,
+            child: Container(
+              height: 700,
+              width: 700,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(700),
+                //color: Colors.white,
+                border: Border.all(color: backgroundColor, width: 100),
+              ),
+            ),
+          ),
+          Positioned(
+            top: 1000,
+            left: -350,
             child: Container(
               height: 700,
               width: 700,
@@ -89,6 +443,38 @@ class UiDesign extends StatelessWidget {
                     letterSpacing: 1,
                   ),
                 ),
+              ),
+            ),
+          ),
+          Positioned(
+            right: 50,
+            bottom: 500,
+            child: Container(
+              width: size.width * 0.45,
+              child: Text(
+                "tools i use",
+                style: GoogleFonts.poppins(
+                  color: backgroundColor.withOpacity(0.05),
+                  fontSize: 170,
+                  fontWeight: FontWeight.w900,
+                  textStyle: TextStyle(
+                    height: 0.9,
+                    letterSpacing: 1,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -250,
+            right: -150,
+            child: Container(
+              height: 700,
+              width: 700,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(700),
+                //color: Colors.white,
+                border: Border.all(color: backgroundColor, width: 100),
               ),
             ),
           ),
@@ -128,13 +514,357 @@ class UiDesign extends StatelessWidget {
                         child: Text(
                           "this is my personal information and all the information are correct. Here I also descuss about my projects.",
                           style: GoogleFonts.poppins(
-                              color: backgroundColor.withOpacity(0.9),
+                              color: Colors.black.withOpacity(0.9),
                               fontSize: 18,
                               fontWeight: FontWeight.w300),
                         ),
                       )
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Obx(
+                  () => Container(
+                    width: size.width * 0.4,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        OnHoverButton(
+                          child: InkWell(
+                            onTap: () {
+                              controller.showAll.value = true;
+                              controller.showComplex.value = false;
+                              controller.showComplete.value = false;
+                              controller.showAnother.value = false;
+                              print(controller.showAll.value);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: controller.showAll.value
+                                    ? backgroundColor
+                                    : backgroundColor.withOpacity(0.1),
+                              ),
+                              child: Text(
+                                "All",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: controller.showAll.value
+                                        ? Colors.white
+                                        : backgroundColor),
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            controller.showComplex.value = true;
+                            controller.showAll.value = false;
+                            controller.showComplete.value = false;
+                            controller.showAnother.value = false;
+                            print(controller.showComplex.value);
+                          },
+                          child: OnHoverButton(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: controller.showComplex.value
+                                    ? backgroundColor
+                                    : backgroundColor.withOpacity(0.1),
+                              ),
+                              child: Text(
+                                "Complex UI",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: controller.showComplex.value
+                                        ? Colors.white
+                                        : backgroundColor),
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            controller.showComplex.value = false;
+                            controller.showAll.value = false;
+                            controller.showComplete.value = true;
+                            controller.showAnother.value = false;
+                            print(controller.showComplete.value);
+                          },
+                          child: OnHoverButton(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: controller.showComplete.value
+                                    ? backgroundColor
+                                    : backgroundColor.withOpacity(0.1),
+                              ),
+                              child: Text(
+                                "Complete project",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: controller.showComplete.value
+                                        ? Colors.white
+                                        : backgroundColor),
+                              ),
+                            ),
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            controller.showComplex.value = false;
+                            controller.showAll.value = false;
+                            controller.showComplete.value = false;
+                            controller.showAnother.value = true;
+                            print(controller.showAnother.value);
+                          },
+                          child: OnHoverButton(
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: controller.showAnother.value
+                                    ? backgroundColor
+                                    : backgroundColor.withOpacity(0.1),
+                              ),
+                              child: Text(
+                                "Another",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: controller.showAnother.value
+                                        ? Colors.white
+                                        : backgroundColor),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Visibility(
+                  visible: true, // true
+                  child: Container(
+                    margin: EdgeInsets.only(left: 70),
+                    width: size.width * 0.5,
+                    child: GridView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: allImages.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
+                        ),
+                        itemBuilder: (context, index) {
+                          return Container(
+                            child: Image.asset(
+                              allImages[index],
+                            ),
+                          );
+                        }),
+                  ),
+                ),
+                Visibility(
+                  visible: false, //
+                  child: Container(
+                    width: size.width * 0.5,
+                    margin: EdgeInsets.only(left: 70),
+                    child: GridView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: complexUi.length,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
+                        ),
+                        itemBuilder: (context, index) {
+                          return Container(
+                            child: Image.asset(
+                              complexUi[index],
+                            ),
+                          );
+                        }),
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * 0.5,
+                ),
+                Container(
+                  // width: size.width * 0.45,
+                  margin: EdgeInsets.only(left: 70),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                height: 100,
+                                width: 200,
+                                child: Image.asset(
+                                  "assets/images/Flutter.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                height: 100,
+                                width: 200,
+                                child: Image.asset(
+                                  "assets/images/firebase.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                height: 100,
+                                width: 200,
+                                child: Image.asset(
+                                  "assets/images/Flutter.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                height: 100,
+                                width: 200,
+                                child: Image.asset(
+                                  "assets/images/Flutter.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                height: 100,
+                                width: 200,
+                                child: Image.asset(
+                                  "assets/images/Flutter.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                height: 100,
+                                width: 200,
+                                child: Image.asset(
+                                  "assets/images/Flutter.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Container(
+                                height: 100,
+                                width: 200,
+                                child: Image.asset(
+                                  "assets/images/Flutter.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                height: 100,
+                                width: 200,
+                                child: Image.asset(
+                                  "assets/images/Flutter.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                height: 100,
+                                width: 200,
+                                child: Image.asset(
+                                  "assets/images/Flutter.png",
+                                  fit: BoxFit.contain,
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        width: 50,
+                      ),
+                      Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              height: 100,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                border: Border.all(
+                                    color: backgroundColor, width: 10),
+                              ),
+                            ),
+                            Text(
+                              "tools",
+                              style: GoogleFonts.poppins(
+                                  color: backgroundColor,
+                                  fontSize: 50,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            Container(
+                              width: size.width * 0.2,
+                              child: Text(
+                                "this is my personal information and all the information are correct. Here I also descuss about my projects.",
+                                style: GoogleFonts.poppins(
+                                    color: Colors.black.withOpacity(0.9),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w300),
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: size.height * 0.3,
                 ),
               ],
             ),
@@ -297,7 +1027,7 @@ class UiDesign extends StatelessWidget {
                             style: GoogleFonts.poppins(
                               color: Colors.white.withOpacity(0.1),
                               fontSize: 150,
-                              fontWeight: FontWeight.w700,
+                              fontWeight: FontWeight.w900,
                             ),
                           ),
                         ),
@@ -497,166 +1227,176 @@ class UiDesign extends StatelessWidget {
                   //mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Spacer(),
-                    Container(
-                      //height: 200,
-                      padding: EdgeInsets.all(20),
-                      width: 300,
+                    OnHoverButton(
+                      child: InkWell(
+                        onTap: () {},
+                        child: Container(
+                          //height: 200,
+                          padding: EdgeInsets.all(20),
+                          width: 300,
 
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: cardColor,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                              offset: Offset(5, 5),
-                              blurRadius: 20,
-                            )
-                          ]),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.laptop,
-                                size: 50,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "web app",
-                                style: GoogleFonts.poppins(
-                                    color: Colors.white,
-                                    fontSize: 36,
-                                    fontWeight: FontWeight.w600),
-                              ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: cardColor,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                offset: Offset(5, 5),
+                                blurRadius: 20,
+                              )
                             ],
                           ),
-                          SizedBox(
-                            height: 10,
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.laptop,
+                                    size: 50,
+                                    color: Colors.white,
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    "web app",
+                                    style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontSize: 36,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Container(
+                                //width: ,
+                                child: Text(
+                                  "these services are available by me, and I will 100% gerenty these services",
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                              )
+                            ],
                           ),
-                          Container(
-                            //width: ,
-                            child: Text(
-                              "these services are available by me, and I will 100% gerenty these services",
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
                     ),
                     SizedBox(
                       width: 50,
                     ),
-                    Container(
-                      //height: 200,
-                      padding: EdgeInsets.all(20),
-                      width: 350,
+                    OnHoverButton(
+                      child: Container(
+                        //height: 200,
+                        padding: EdgeInsets.all(20),
+                        width: 350,
 
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: cardColor,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                              offset: Offset(5, 5),
-                              blurRadius: 20,
-                            )
-                          ]),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.phone_android,
-                                size: 50,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "android app",
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: cardColor,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                offset: Offset(5, 5),
+                                blurRadius: 20,
+                              )
+                            ]),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.phone_android,
+                                  size: 50,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "android app",
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                      fontSize: 36,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              //width: ,
+                              child: Text(
+                                "these services are available by me, and I will 100% gerenty these services. professional android developer. these services are available by me, and I will 100% gerenty these services.",
                                 style: GoogleFonts.poppins(
                                     color: Colors.white,
-                                    fontSize: 36,
-                                    fontWeight: FontWeight.w600),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300),
                               ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            //width: ,
-                            child: Text(
-                              "these services are available by me, and I will 100% gerenty these services. professional android developer. these services are available by me, and I will 100% gerenty these services.",
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300),
-                            ),
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(
                       width: 50,
                     ),
-                    Container(
-                      //height: 200,
-                      padding: EdgeInsets.all(20),
-                      width: 300,
+                    OnHoverButton(
+                      child: Container(
+                        //height: 200,
+                        padding: EdgeInsets.all(20),
+                        width: 300,
 
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: cardColor,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                              offset: Offset(5, 5),
-                              blurRadius: 20,
-                            )
-                          ]),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.laptop,
-                                size: 50,
-                                color: Colors.white,
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "ui design",
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: cardColor,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                offset: Offset(5, 5),
+                                blurRadius: 20,
+                              )
+                            ]),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.laptop,
+                                  size: 50,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  "ui design",
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                      fontSize: 36,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              //width: ,
+                              child: Text(
+                                "these services are available by me, and I will 100% gerenty these services",
                                 style: GoogleFonts.poppins(
                                     color: Colors.white,
-                                    fontSize: 36,
-                                    fontWeight: FontWeight.w600),
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300),
                               ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Container(
-                            //width: ,
-                            child: Text(
-                              "these services are available by me, and I will 100% gerenty these services",
-                              style: GoogleFonts.poppins(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w300),
-                            ),
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     Spacer(),
