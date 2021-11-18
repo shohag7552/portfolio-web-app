@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portpolio_web_site/Controller/home_controller.dart';
+import 'package:portpolio_web_site/Screens/SubPages/semiwhiteportion.dart';
+import 'package:portpolio_web_site/Screens/SubPages/video_play.dart';
 import 'package:portpolio_web_site/constants.dart';
 import 'package:portpolio_web_site/onHover.dart';
 
@@ -26,31 +26,6 @@ class HomePage extends StatelessWidget {
 }
 
 class UiDesign extends StatelessWidget {
-  final HomeController controller = Get.put(HomeController());
-  final List<String> allImages = [
-    "assets/images/app-ui.jpg",
-    "assets/images/Financial.jpg",
-    "assets/images/ui.jpg",
-    "assets/images/Financial.jpg",
-    "assets/images/ui.jpg",
-    "assets/images/app-ui.jpg",
-    "assets/images/app-ui.jpg",
-    "assets/images/Financial.jpg",
-    "assets/images/ui.jpg",
-    "assets/images/Financial.jpg",
-    "assets/images/ui.jpg",
-    "assets/images/app-ui.jpg",
-  ];
-  final List<String> complexUi = [
-    "assets/images/Financial.jpg",
-    "assets/images/ui.jpg",
-    "assets/images/Financial.jpg",
-    "assets/images/ui.jpg",
-    "assets/images/Financial.jpg",
-    "assets/images/ui.jpg",
-    "assets/images/app-ui.jpg",
-  ];
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -62,10 +37,11 @@ class UiDesign extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                  color: backgroundColor,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(200),
-                  )),
+                color: backgroundColor,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(200),
+                ),
+              ),
               child: bluePortion(size),
             ),
             Container(
@@ -77,7 +53,7 @@ class UiDesign extends StatelessWidget {
                     bottomRight: Radius.circular(200),
                   ),
                 ),
-                child: semiwhitePortion(size),
+                child: SemiWhitePortion(size),
               ),
             ),
             Container(
@@ -93,11 +69,132 @@ class UiDesign extends StatelessWidget {
                 child: whitePortion(size),
               ),
             ),
+            // Container(
+            //   height: 800,
+            //   width: size.width,
+            //   color: backgroundColor,
+            //   child: PlayVideo(size),
+            // ),
             Container(
               height: 500,
               width: size.width,
               color: backgroundColor,
-            )
+              child: lastPortion(size),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget lastPortion(Size size) {
+    return Container(
+      child: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      height: 70,
+                      width: 70,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(color: Colors.white, width: 15),
+                      ),
+                    ),
+                    Positioned(
+                      top: 35,
+                      child: Container(
+                        height: 70,
+                        width: 70,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border: Border.all(color: backgroundColor, width: 15),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Center(
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      child: Image.asset(
+                        "assets/images/facebook.png",
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Center(
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      child: Image.asset(
+                        "assets/images/whatsapp.png",
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Center(
+                    child: Container(
+                      height: 30,
+                      width: 30,
+                      child: Image.asset(
+                        "assets/images/instagram.png",
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            Divider(
+              color: Colors.white,
+              thickness: 2,
+              endIndent: 200,
+              indent: 200,
+            ),
           ],
         ),
       ),
@@ -395,485 +492,6 @@ class UiDesign extends StatelessWidget {
     );
   }
 
-  Widget semiwhitePortion(Size size) {
-    return Container(
-      // height: size.height,
-      width: size.width,
-      child: Stack(
-        children: [
-          Positioned(
-            top: -450,
-            right: 150,
-            child: Container(
-              height: 700,
-              width: 700,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(700),
-                //color: Colors.white,
-                border: Border.all(color: backgroundColor, width: 100),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 1000,
-            left: -350,
-            child: Container(
-              height: 700,
-              width: 700,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(700),
-                //color: Colors.white,
-                border: Border.all(color: backgroundColor, width: 100),
-              ),
-            ),
-          ),
-          Positioned(
-            left: 250,
-            top: 300,
-            child: Container(
-              width: size.width * 0.45,
-              child: Text(
-                "my portfolio",
-                style: GoogleFonts.poppins(
-                  color: backgroundColor.withOpacity(0.05),
-                  fontSize: 170,
-                  fontWeight: FontWeight.w900,
-                  textStyle: TextStyle(
-                    height: 0.9,
-                    letterSpacing: 1,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            right: 50,
-            bottom: 500,
-            child: Container(
-              width: size.width * 0.45,
-              child: Text(
-                "tools i use",
-                style: GoogleFonts.poppins(
-                  color: backgroundColor.withOpacity(0.05),
-                  fontSize: 170,
-                  fontWeight: FontWeight.w900,
-                  textStyle: TextStyle(
-                    height: 0.9,
-                    letterSpacing: 1,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: -250,
-            right: -150,
-            child: Container(
-              height: 700,
-              width: 700,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(700),
-                //color: Colors.white,
-                border: Border.all(color: backgroundColor, width: 100),
-              ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(top: 500, left: 350),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 100,
-                  width: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    border: Border.all(color: backgroundColor, width: 10),
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(
-                    top: 10,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "portfolio",
-                        style: GoogleFonts.poppins(
-                            color: backgroundColor,
-                            fontSize: 50,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Container(
-                        width: 500,
-                        child: Text(
-                          "this is my personal information and all the information are correct. Here I also descuss about my projects.",
-                          style: GoogleFonts.poppins(
-                              color: Colors.black.withOpacity(0.9),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w300),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Obx(
-                  () => Container(
-                    width: size.width * 0.4,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        OnHoverButton(
-                          child: InkWell(
-                            onTap: () {
-                              controller.showAll.value = true;
-                              controller.showComplex.value = false;
-                              controller.showComplete.value = false;
-                              controller.showAnother.value = false;
-                              print(controller.showAll.value);
-                            },
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: controller.showAll.value
-                                    ? backgroundColor
-                                    : backgroundColor.withOpacity(0.1),
-                              ),
-                              child: Text(
-                                "All",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: controller.showAll.value
-                                        ? Colors.white
-                                        : backgroundColor),
-                              ),
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            controller.showComplex.value = true;
-                            controller.showAll.value = false;
-                            controller.showComplete.value = false;
-                            controller.showAnother.value = false;
-                            print(controller.showComplex.value);
-                          },
-                          child: OnHoverButton(
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: controller.showComplex.value
-                                    ? backgroundColor
-                                    : backgroundColor.withOpacity(0.1),
-                              ),
-                              child: Text(
-                                "Complex UI",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: controller.showComplex.value
-                                        ? Colors.white
-                                        : backgroundColor),
-                              ),
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            controller.showComplex.value = false;
-                            controller.showAll.value = false;
-                            controller.showComplete.value = true;
-                            controller.showAnother.value = false;
-                            print(controller.showComplete.value);
-                          },
-                          child: OnHoverButton(
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: controller.showComplete.value
-                                    ? backgroundColor
-                                    : backgroundColor.withOpacity(0.1),
-                              ),
-                              child: Text(
-                                "Complete project",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: controller.showComplete.value
-                                        ? Colors.white
-                                        : backgroundColor),
-                              ),
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            controller.showComplex.value = false;
-                            controller.showAll.value = false;
-                            controller.showComplete.value = false;
-                            controller.showAnother.value = true;
-                            print(controller.showAnother.value);
-                          },
-                          child: OnHoverButton(
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 5),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: controller.showAnother.value
-                                    ? backgroundColor
-                                    : backgroundColor.withOpacity(0.1),
-                              ),
-                              child: Text(
-                                "Another",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: controller.showAnother.value
-                                        ? Colors.white
-                                        : backgroundColor),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Visibility(
-                  visible: true, // true
-                  child: Container(
-                    margin: EdgeInsets.only(left: 70),
-                    width: size.width * 0.5,
-                    child: GridView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: allImages.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 20,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            child: Image.asset(
-                              allImages[index],
-                            ),
-                          );
-                        }),
-                  ),
-                ),
-                Visibility(
-                  visible: false, //
-                  child: Container(
-                    width: size.width * 0.5,
-                    margin: EdgeInsets.only(left: 70),
-                    child: GridView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: complexUi.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 20,
-                          mainAxisSpacing: 20,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            child: Image.asset(
-                              complexUi[index],
-                            ),
-                          );
-                        }),
-                  ),
-                ),
-                SizedBox(
-                  height: size.height * 0.5,
-                ),
-                Container(
-                  // width: size.width * 0.45,
-                  margin: EdgeInsets.only(left: 70),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                height: 100,
-                                width: 200,
-                                child: Image.asset(
-                                  "assets/images/Flutter.png",
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 200,
-                                child: Image.asset(
-                                  "assets/images/firebase.png",
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 200,
-                                child: Image.asset(
-                                  "assets/images/Flutter.png",
-                                  fit: BoxFit.contain,
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                height: 100,
-                                width: 200,
-                                child: Image.asset(
-                                  "assets/images/Flutter.png",
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 200,
-                                child: Image.asset(
-                                  "assets/images/Flutter.png",
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 200,
-                                child: Image.asset(
-                                  "assets/images/Flutter.png",
-                                  fit: BoxFit.contain,
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Container(
-                                height: 100,
-                                width: 200,
-                                child: Image.asset(
-                                  "assets/images/Flutter.png",
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 200,
-                                child: Image.asset(
-                                  "assets/images/Flutter.png",
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                height: 100,
-                                width: 200,
-                                child: Image.asset(
-                                  "assets/images/Flutter.png",
-                                  fit: BoxFit.contain,
-                                ),
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Container(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              height: 100,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(50),
-                                border: Border.all(
-                                    color: backgroundColor, width: 10),
-                              ),
-                            ),
-                            Text(
-                              "tools",
-                              style: GoogleFonts.poppins(
-                                  color: backgroundColor,
-                                  fontSize: 50,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                            Container(
-                              width: size.width * 0.2,
-                              child: Text(
-                                "this is my personal information and all the information are correct. Here I also descuss about my projects.",
-                                style: GoogleFonts.poppins(
-                                    color: Colors.black.withOpacity(0.9),
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w300),
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: size.height * 0.3,
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
   Widget bluePortion(Size size) {
     return Container(
       //height: size.height * 2,
@@ -1113,6 +731,8 @@ class UiDesign extends StatelessWidget {
                             child: Image.asset(
                               "assets/images/image.png",
                               fit: BoxFit.contain,
+                              //filterQuality: FilterQuality.high,
+                              //color: backgroundColor.withOpacity(0.1),
                             ),
                           ),
                         ),
