@@ -1,7 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:portpolio_web_site/Controller/home_controller.dart';
+import 'package:protfolio_web_app/Controller/home_controller.dart';
 
 class PlayVideo extends StatelessWidget {
   final Size size;

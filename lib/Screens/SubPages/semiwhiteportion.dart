@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portpolio_web_site/Controller/home_controller.dart';
-import 'package:portpolio_web_site/constants.dart';
-import 'package:portpolio_web_site/onHover.dart';
+import 'package:protfolio_web_app/Controller/home_controller.dart';
+import 'package:protfolio_web_app/constants.dart';
+import 'package:protfolio_web_app/onHover.dart';
 
 class SemiWhitePortion extends StatelessWidget {
   final Size size;
-  SemiWhitePortion(this.size);
+  SemiWhitePortion({required this.size, super.key});
 
   //final HomeController controller = Get.put(HomeController());
   final List<String> allImages = [
@@ -38,7 +38,7 @@ class SemiWhitePortion extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
       init: HomeController(),
-      builder: (controller) => Container(
+      builder: (controller) => SizedBox(
         // height: size.height,
         width: size.width,
         child: Stack(
@@ -80,7 +80,7 @@ class SemiWhitePortion extends StatelessWidget {
                     color: backgroundColor.withOpacity(0.05),
                     fontSize: 170,
                     fontWeight: FontWeight.w900,
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                       height: 0.9,
                       letterSpacing: 1,
                     ),

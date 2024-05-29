@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:portpolio_web_site/Screens/SubPages/semiwhiteportion.dart';
-import 'package:portpolio_web_site/Screens/SubPages/video_play.dart';
-import 'package:portpolio_web_site/constants.dart';
-import 'package:portpolio_web_site/onHover.dart';
+import 'package:protfolio_web_app/Screens/SubPages/semiwhiteportion.dart';
+import 'package:protfolio_web_app/Screens/widgets/contact_widgets.dart';
+import 'package:protfolio_web_app/constants.dart';
+import 'package:protfolio_web_app/onHover.dart';
+import 'package:protfolio_web_app/utils/colors.dart';
+import 'package:protfolio_web_app/utils/images.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +16,9 @@ class HomePage extends StatelessWidget {
       backgroundColor: semiWhiteColor,
       body: LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth > 1500) {
+          if (constraints.maxWidth > 1100) {
             print(constraints.maxWidth);
-            return UiDesign();
+            return const UiDesign();
           }
           return Container();
         },
@@ -26,10 +28,12 @@ class HomePage extends StatelessWidget {
 }
 
 class UiDesign extends StatelessWidget {
+  const UiDesign({super.key});
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       height: size.height,
       width: size.width,
       child: SingleChildScrollView(
@@ -38,28 +42,26 @@ class UiDesign extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 color: backgroundColor,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(200),
-                ),
+                borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(200)),
               ),
               child: bluePortion(size),
             ),
+
             Container(
               color: Colors.white,
               child: Container(
                 decoration: BoxDecoration(
                   color: semiWhiteColor,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(200),
-                  ),
+                  borderRadius: const BorderRadius.only(bottomRight: Radius.circular(200)),
                 ),
-                child: SemiWhitePortion(size),
+                child: SemiWhitePortion(size: size),
               ),
             ),
+
             Container(
               color: backgroundColor,
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(200),
@@ -88,141 +90,106 @@ class UiDesign extends StatelessWidget {
   }
 
   Widget lastPortion(Size size) {
-    return Container(
-      child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: 70,
-                      width: 70,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        border: Border.all(color: Colors.white, width: 15),
-                      ),
-                    ),
-                    Positioned(
-                      top: 35,
-                      child: Container(
-                        height: 70,
-                        width: 70,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(color: backgroundColor, width: 15),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  width: 50,
-                ),
+    return Center(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Stack(children: [
                 Container(
-                  height: 50,
-                  width: 50,
+                  height: 70, width: 70,
                   decoration: BoxDecoration(
-                    color: Colors.white,
                     borderRadius: BorderRadius.circular(50),
+                    border: Border.all(color: Colors.white, width: 15),
                   ),
-                  child: Center(
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      child: Image.asset(
-                        "assets/images/facebook.png",
-                        color: Colors.black,
-                      ),
+                ),
+
+                Positioned(
+                  top: 35,
+                  child: Container(
+                    height: 70, width: 70,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      border: Border.all(color: backgroundColor, width: 15),
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 50,
+              ]),
+              const SizedBox(width: 50),
+
+              Container(
+                height: 50, width: 50,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
                 ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: Center(
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      child: Image.asset(
-                        "assets/images/whatsapp.png",
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                child: Center(
+                  child: SizedBox(
+                    height: 30, width: 30,
+                    child: Image.asset(Images.facebook, color: Colors.black),
                   ),
                 ),
-                SizedBox(
-                  width: 50,
-                ),
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  child: Center(
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      child: Image.asset(
-                        "assets/images/instagram.png",
-                        color: Colors.black,
-                      ),
-                    ),
+              ),
+              const SizedBox(width: 50),
+
+              Container(
+                height: 50, width: 50,
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50)),
+                child: Center(
+                  child: SizedBox(
+                    height: 30, width: 30,
+                    child: Image.asset(Images.whatsapp, fit: BoxFit.cover),
                   ),
                 ),
-              ],
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Divider(
-              color: Colors.white,
-              thickness: 2,
-              endIndent: 200,
-              indent: 200,
-            ),
-          ],
-        ),
+              ),
+              const SizedBox(width: 50),
+
+              Container(
+                height: 50, width: 50,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Center(
+                  child: SizedBox(
+                    height: 30, width: 30,
+                    child: Image.asset(Images.instagram, color: Colors.black),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 50),
+
+          const Divider(color: Colors.white, thickness: 2, endIndent: 200, indent: 200),
+        ],
       ),
     );
   }
 
   Widget whitePortion(Size size) {
-    return Container(
+    return SizedBox(
       width: size.width,
       child: Stack(
         children: [
           Positioned(
-            top: -450,
-            right: -150,
+            top: -450, right: -150,
             child: Container(
-              height: 700,
-              width: 700,
+              height: 700, width: 700,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(700),
-                //color: Colors.white,
-                border: Border.all(color: semiWhiteColor, width: 100),
+                border: Border.all(color: AppColor.semiWhiteColor, width: 100),
               ),
             ),
           ),
           Positioned(
             left: 300,
             top: 250,
-            child: Container(
+            child: SizedBox(
               width: size.width * 0.45,
               child: Text(
                 "contact with me",
@@ -230,7 +197,7 @@ class UiDesign extends StatelessWidget {
                   color: backgroundColor.withOpacity(0.05),
                   fontSize: 170,
                   fontWeight: FontWeight.w900,
-                  textStyle: TextStyle(
+                  textStyle: const TextStyle(
                     height: 0.9,
                     letterSpacing: 1,
                   ),
@@ -242,17 +209,16 @@ class UiDesign extends StatelessWidget {
             bottom: -350,
             right: size.width * 0.3,
             child: Container(
-              height: 700,
-              width: 700,
+              height: 700, width: 700,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(700),
-                //color: Colors.white,
-                border: Border.all(color: backgroundColor, width: 100),
+                border: Border.all(color: AppColor.backgroundColor, width: 100),
               ),
             ),
           ),
+
           Container(
-            padding: EdgeInsets.only(top: 500, left: 450, bottom: 270),
+            padding: const EdgeInsets.only(top: 500, left: 450, bottom: 270),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -261,121 +227,54 @@ class UiDesign extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      height: 100,
-                      width: 100,
+                      height: 100, width: 100,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
-                        border: Border.all(color: backgroundColor, width: 10),
+                        border: Border.all(color: AppColor.backgroundColor, width: 10),
                       ),
                     ),
+
                     Text(
                       "contact me",
                       style: GoogleFonts.poppins(
-                          color: backgroundColor,
-                          fontSize: 50,
-                          fontWeight: FontWeight.w800),
+                        color: backgroundColor,
+                        fontSize: 50,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
-                    Container(
+
+                    SizedBox(
                       width: size.width * 0.2,
                       child: Text(
                         "this is my personal information and all the information are correct. Here I also descuss about my projects.",
                         style: GoogleFonts.poppins(
-                            color: Colors.black.withOpacity(0.7),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400),
+                          color: Colors.black.withOpacity(0.7),
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.call,
-                            color: backgroundColor,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "+880 1677696277",
-                            style: GoogleFonts.poppins(
-                                color: Colors.teal,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: backgroundColor,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "Barura, Cumilla, Bangladesh",
-                            style: GoogleFonts.poppins(
-                                color: Colors.teal,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.mail_outline,
-                            color: backgroundColor,
-                            size: 20,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "mehedi05739@gmail.com",
-                            style: GoogleFonts.poppins(
-                                color: Colors.teal,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
+
+                    const SizedBox(height: 50),
+
+                    const ContactWidgets(icon: Icons.call, title: "+880 1677696277"),
+                    const SizedBox(height: 10),
+
+                    const ContactWidgets(icon: Icons.location_on, title: "Barura, Cumilla, Bangladesh"),
+                    const SizedBox(height: 10),
+
+                    const ContactWidgets(icon: Icons.mail_outline, title: "mehedi05739@gmail.com"),
                   ],
                 ),
-                SizedBox(
-                  width: 20,
-                ),
+                const SizedBox(width: 20),
+
                 Container(
-                  // height: 400,
                   width: size.width * 0.3,
-                  padding: EdgeInsets.symmetric(horizontal: 50, vertical: 50),
+                  padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 50),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(50),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        offset: Offset(5, 5),
-                        blurRadius: 20,
-                      ),
-                    ],
+                    boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.3), offset: const Offset(5, 5), blurRadius: 20)],
                   ),
                   child: Column(
                     children: [
@@ -393,8 +292,7 @@ class UiDesign extends StatelessWidget {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Email",
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 20),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                             hintStyle: GoogleFonts.poppins(
                               color: backgroundColor.withOpacity(0.5),
                               fontSize: 18,
@@ -403,9 +301,8 @@ class UiDesign extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 30,
-                      ),
+                      const SizedBox(height: 30),
+
                       Container(
                         decoration: BoxDecoration(
                           color: backgroundColor.withOpacity(0.1),
@@ -420,8 +317,7 @@ class UiDesign extends StatelessWidget {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Name",
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 20),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                             hintStyle: GoogleFonts.poppins(
                               color: backgroundColor.withOpacity(0.5),
                               fontSize: 18,
@@ -430,9 +326,8 @@ class UiDesign extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 30,
-                      ),
+                      const SizedBox(height: 30),
+
                       Container(
                         decoration: BoxDecoration(
                           color: backgroundColor.withOpacity(0.1),
@@ -448,8 +343,7 @@ class UiDesign extends StatelessWidget {
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintText: "Message",
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 20),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                             hintStyle: GoogleFonts.poppins(
                               color: backgroundColor.withOpacity(0.5),
                               fontSize: 18,
@@ -458,24 +352,14 @@ class UiDesign extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      RaisedButton(
+                      const SizedBox(height: 30),
+
+                      ElevatedButton(
                         onPressed: () {},
-                        color: backgroundColor,
-                        textColor: Colors.white,
-                        elevation: 5,
-                        hoverElevation: 15,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: size.width * 0.1, vertical: 20),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                        ),
                         child: Text(
                           "send",
                           style: GoogleFonts.poppins(
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 18,
                             fontWeight: FontWeight.w500,
                           ),
@@ -493,7 +377,7 @@ class UiDesign extends StatelessWidget {
   }
 
   Widget bluePortion(Size size) {
-    return Container(
+    return SizedBox(
       //height: size.height * 2,
       width: size.width,
 
@@ -502,7 +386,7 @@ class UiDesign extends StatelessWidget {
           Positioned(
             left: 250,
             bottom: size.height * 0.6,
-            child: Container(
+            child: SizedBox(
               width: size.width * 0.4,
               child: Text(
                 "my services",
@@ -510,10 +394,7 @@ class UiDesign extends StatelessWidget {
                   color: Colors.white.withOpacity(0.1),
                   fontSize: 150,
                   fontWeight: FontWeight.w900,
-                  textStyle: TextStyle(
-                    height: 0.9,
-                    letterSpacing: 1,
-                  ),
+                  textStyle: const TextStyle(height: 0.9, letterSpacing: 1),
                 ),
               ),
             ),
@@ -526,11 +407,11 @@ class UiDesign extends StatelessWidget {
               width: 700,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(700),
-                //color: Colors.white,
                 border: Border.all(color: Colors.white, width: 100),
               ),
             ),
           ),
+
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -555,87 +436,84 @@ class UiDesign extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: size.height * 0.15,
-              ),
+              SizedBox(height: size.height * 0.15),
+
               Padding(
-                padding: EdgeInsets.only(left: 250, top: 50),
+                padding: const EdgeInsets.only(left: 250, top: 50),
                 child: Row(
                   children: [
                     Stack(
                       children: [
-                        Container(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "do with passion",
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "do with passion",
+                              style: GoogleFonts.poppins(
+                                color: Colors.white70,
+                                fontSize: 22,
+                              ),
+                            ),
+                            SizedBox(
+                              width: size.width * 0.5,
+                              child: Text(
+                                "Develop Beautiful App & Website",
                                 style: GoogleFonts.poppins(
-                                  color: Colors.white70,
-                                  fontSize: 22,
+                                  color: Colors.white,
+                                  fontSize: 80,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
-                              Container(
-                                width: size.width * 0.5,
-                                child: Text(
-                                  "Develop Beautiful App & Website",
-                                  style: GoogleFonts.poppins(
+                            ),
+                            SizedBox(height: size.height * 0.01),
+
+                            SizedBox(
+                              width: size.width * 0.40,
+                              child: Text(
+                                "do with passion do with passion do with passion ,do with passion do with passion do with passiondo with passion do with passion do with passion",
+                                style: GoogleFonts.poppins(
+                                  fontStyle: FontStyle.normal,
+                                  color: Colors.white54,
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+
+                            SizedBox(
+                              width: size.width * 0.1,
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    Icons.public,
                                     color: Colors.white,
-                                    fontSize: 80,
-                                    fontWeight: FontWeight.w700,
+                                    size: 28,
                                   ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: size.height * 0.01,
-                              ),
-                              Container(
-                                width: size.width * 0.40,
-                                child: Text(
-                                  "do with passion do with passion do with passion ,do with passion do with passion do with passiondo with passion do with passion do with passion",
-                                  style: GoogleFonts.poppins(
-                                    fontStyle: FontStyle.normal,
-                                    color: Colors.white54,
-                                    fontSize: 18,
+                                  Spacer(),
+                                  Icon(
+                                    Icons.gif_outlined,
+                                    color: Colors.white,
+                                    size: 28,
                                   ),
-                                ),
+                                  Spacer(),
+                                  Icon(
+                                    Icons.support_agent_outlined,
+                                    color: Colors.white,
+                                    size: 28,
+                                  ),
+                                  Spacer(),
+                                  Icon(
+                                    Icons.local_fire_department_outlined,
+                                    color: Colors.white,
+                                    size: 28,
+                                  ),
+                                ],
                               ),
-                              SizedBox(
-                                height: size.height * 0.02,
-                              ),
-                              Container(
-                                width: size.width * 0.1,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Icon(
-                                      Icons.public,
-                                      color: Colors.white,
-                                      size: 28,
-                                    ),
-                                    Spacer(),
-                                    Icon(
-                                      Icons.gif_outlined,
-                                      color: Colors.white,
-                                      size: 28,
-                                    ),
-                                    Spacer(),
-                                    Icon(
-                                      Icons.support_agent_outlined,
-                                      color: Colors.white,
-                                      size: 28,
-                                    ),
-                                    Spacer(),
-                                    Icon(
-                                      Icons.local_fire_department_outlined,
-                                      color: Colors.white,
-                                      size: 28,
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
+                            )
+                          ],
                         ),
                         Positioned(
                           bottom: size.height * 0.05,
@@ -712,7 +590,7 @@ class UiDesign extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 250, top: 50),
+                    margin: const EdgeInsets.only(left: 250, top: 50),
                     height: size.height * 0.7,
                     width: size.width * 0.7,
                     decoration: BoxDecoration(
@@ -723,23 +601,16 @@ class UiDesign extends StatelessWidget {
                       children: [
                         Expanded(
                           flex: 4,
-                          child: Container(
+                          child: SizedBox(
                             height: size.height * 0.5,
-
-                            //width: size.width * 0.3,
-                            //color: Colors.amber,
-                            child: Image.asset(
-                              "assets/images/image.png",
-                              fit: BoxFit.contain,
-                              //filterQuality: FilterQuality.high,
-                              //color: backgroundColor.withOpacity(0.1),
-                            ),
+                            child: Image.asset(Images.image, fit: BoxFit.contain),
                           ),
                         ),
+
                         Expanded(
                           flex: 6,
                           child: Container(
-                            padding: EdgeInsets.only(right: 20),
+                            padding: const EdgeInsets.only(right: 20),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -747,7 +618,7 @@ class UiDesign extends StatelessWidget {
                                 Text(
                                   "Flutter Developer",
                                   style: GoogleFonts.poppins(
-                                    textStyle: TextStyle(color: Colors.white60),
+                                    textStyle: const TextStyle(color: Colors.white60),
                                     fontSize: 18,
                                   ),
                                 ),
@@ -757,9 +628,8 @@ class UiDesign extends StatelessWidget {
                                       color: Colors.white,
                                       fontSize: 80,
                                       fontWeight: FontWeight.w700,
-                                      textStyle: TextStyle(
-                                        height: 1.2,
-                                      )),
+                                      textStyle: const TextStyle(height: 1.2),
+                                  ),
                                 ),
                                 Text(
                                   "do with passion do with passion do with passion ,do with passion do with passion do with passiondo with passion do with passion do with passion",
@@ -825,10 +695,10 @@ class UiDesign extends StatelessWidget {
                           fontSize: 50,
                           fontWeight: FontWeight.w600),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 50,
                     ),
-                    Container(
+                    SizedBox(
                       width: 500,
                       child: Text(
                         "these services are available by me, and I will 100% gerenty these services",
@@ -846,22 +716,22 @@ class UiDesign extends StatelessWidget {
                 child: Row(
                   //mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     OnHoverButton(
                       child: InkWell(
                         onTap: () {},
                         child: Container(
                           //height: 200,
-                          padding: EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(20),
                           width: 300,
 
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: cardColor,
+                            color: AppColor.cardColor,
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withOpacity(0.3),
-                                offset: Offset(5, 5),
+                                offset: const Offset(5, 5),
                                 blurRadius: 20,
                               )
                             ],
@@ -870,34 +740,27 @@ class UiDesign extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(
-                                    Icons.laptop,
-                                    size: 50,
-                                    color: Colors.white,
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
+                                  const Icon(Icons.laptop, size: 50, color: Colors.white),
+                                  const SizedBox(width: 10),
+
                                   Text(
                                     "web app",
                                     style: GoogleFonts.poppins(
                                         color: Colors.white,
                                         fontSize: 36,
-                                        fontWeight: FontWeight.w600),
+                                        fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ],
                               ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                //width: ,
-                                child: Text(
-                                  "these services are available by me, and I will 100% gerenty these services",
-                                  style: GoogleFonts.poppins(
-                                      color: Colors.white,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w300),
+                              const SizedBox(height: 10),
+
+                              Text(
+                                "these services are available by me, and I will 100% gerenty these services",
+                                style: GoogleFonts.poppins(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
                                 ),
                               )
                             ],
@@ -905,15 +768,12 @@ class UiDesign extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 50,
-                    ),
+                    const SizedBox(width: 50),
+
                     OnHoverButton(
                       child: Container(
-                        //height: 200,
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         width: 350,
-
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: cardColor,
@@ -928,56 +788,46 @@ class UiDesign extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                Icon(
-                                  Icons.phone_android,
-                                  size: 50,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                                const Icon(Icons.phone_android, size: 50, color: Colors.white),
+                                const SizedBox(width: 10),
+
                                 Text(
                                   "android app",
                                   style: GoogleFonts.poppins(
                                       color: Colors.white,
                                       fontSize: 36,
-                                      fontWeight: FontWeight.w600),
+                                      fontWeight: FontWeight.w600,
+                                  ),
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              //width: ,
-                              child: Text(
-                                "these services are available by me, and I will 100% gerenty these services. professional android developer. these services are available by me, and I will 100% gerenty these services.",
-                                style: GoogleFonts.poppins(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w300),
-                              ),
+                            const SizedBox(height: 10),
+
+                            Text(
+                              "these services are available by me, and I will 100% gerenty these services. professional android developer. these services are available by me, and I will 100% gerenty these services.",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300),
                             )
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(
-                      width: 50,
-                    ),
+                    const SizedBox(width: 50),
+
                     OnHoverButton(
                       child: Container(
                         //height: 200,
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         width: 300,
-
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: cardColor,
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withOpacity(0.3),
-                                offset: Offset(5, 5),
+                                offset: const Offset(5, 5),
                                 blurRadius: 20,
                               )
                             ]),
@@ -985,14 +835,9 @@ class UiDesign extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                Icon(
-                                  Icons.laptop,
-                                  size: 50,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
+                                const Icon(Icons.laptop, size: 50, color: Colors.white),
+                                const SizedBox(width: 10),
+
                                 Text(
                                   "ui design",
                                   style: GoogleFonts.poppins(
@@ -1002,24 +847,20 @@ class UiDesign extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Container(
-                              //width: ,
-                              child: Text(
-                                "these services are available by me, and I will 100% gerenty these services",
-                                style: GoogleFonts.poppins(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w300),
-                              ),
+                            const SizedBox(height: 10),
+
+                            Text(
+                              "these services are available by me, and I will 100% gerenty these services",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300),
                             )
                           ],
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                   ],
                 ),
               ),
