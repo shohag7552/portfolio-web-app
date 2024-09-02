@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:protfolio_web_app/Screens/SubPages/semiwhiteportion.dart';
@@ -27,8 +28,14 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class UiDesign extends StatelessWidget {
+class UiDesign extends StatefulWidget {
   const UiDesign({super.key});
+
+  @override
+  State<UiDesign> createState() => _UiDesignState();
+}
+
+class _UiDesignState extends State<UiDesign> {
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +90,41 @@ class UiDesign extends StatelessWidget {
               color: backgroundColor,
               child: lastPortion(size),
             ),
+
+            // Container(
+            //   color: Colors.amber,
+            //   height: 400, width: size.width,
+            //   child: Expanded(
+            //     child: Container(
+            //       height: 120, width: size.width,
+            //       color: Colors.greenAccent,
+            //       child: ListView.builder(
+            //           controller: _scrollController1,
+            //           scrollDirection: Axis.horizontal,
+            //           shrinkWrap: true,
+            //           itemCount: appUis.length,
+            //           padding: const EdgeInsets.symmetric(vertical: 20),
+            //           itemBuilder: (context, index) {
+            //             return Container(
+            //               margin: const EdgeInsets.all(10),
+            //               decoration: BoxDecoration(
+            //                 color: Colors.deepOrange,
+            //                 borderRadius: BorderRadius.circular(25),
+            //                 border: Border.all(color: Colors.white),
+            //               ),
+            //               child: ClipRRect(
+            //                 borderRadius: BorderRadius.circular(25),
+            //                 child: CachedNetworkImage(
+            //                   imageUrl: appUis[index], width: 500, fit: BoxFit.cover,
+            //                   placeholder: (context, url) => const CircularProgressIndicator(),
+            //                   errorWidget: (context, url, error) => const Icon(Icons.error),
+            //                 ),
+            //               ),
+            //             );
+            //           }),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -780,7 +822,7 @@ class UiDesign extends StatelessWidget {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black.withOpacity(0.3),
-                                offset: Offset(5, 5),
+                                offset: const Offset(5, 5),
                                 blurRadius: 20,
                               )
                             ]),
