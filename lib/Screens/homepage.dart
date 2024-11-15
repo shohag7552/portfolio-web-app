@@ -37,96 +37,127 @@ class UiDesign extends StatefulWidget {
 
 class _UiDesignState extends State<UiDesign> {
 
+  ScrollController scrollController = ScrollController();
+  bool showHeader = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    scrollController.addListener(() {
+      print('=======sscroll : ${scrollController.offset}');
+      if(scrollController.offset > 200) {
+        showHeader = true;
+      } else {
+        showHeader = false;
+      }
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SizedBox(
       height: size.height,
       width: size.width,
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: backgroundColor,
-                borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(200)),
-              ),
-              child: bluePortion(size),
-            ),
+      child: Column(
+        children: [
 
-            Container(
-              color: Colors.white,
-              child: Container(
-                decoration: BoxDecoration(
-                  color: semiWhiteColor,
-                  borderRadius: const BorderRadius.only(bottomRight: Radius.circular(200)),
-                ),
-                child: SemiWhitePortion(size: size),
-              ),
-            ),
+          showHeader ? Container(
+            height: 100, width: size.width, color: Colors.yellowAccent,
+          ) : const SizedBox(),
 
-            Container(
-              color: backgroundColor,
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(200),
-                    bottomRight: Radius.circular(200),
+          Expanded(
+            child: SingleChildScrollView(
+              controller: scrollController,
+              child: Column(
+                children: [
+
+                  Container(
+                    decoration: BoxDecoration(
+                      color: backgroundColor,
+                      borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(200)),
+                    ),
+                    child: bluePortion(size),
                   ),
-                ),
-                child: whitePortion(size),
+
+                  Container(
+                    color: Colors.white,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: semiWhiteColor,
+                        borderRadius: const BorderRadius.only(bottomRight: Radius.circular(200)),
+                      ),
+                      child: SemiWhitePortion(size: size),
+                    ),
+                  ),
+
+                  Container(
+                    color: backgroundColor,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(200),
+                          bottomRight: Radius.circular(200),
+                        ),
+                      ),
+                      child: whitePortion(size),
+                    ),
+                  ),
+                  // Container(
+                  //   height: 800,
+                  //   width: size.width,
+                  //   color: backgroundColor,
+                  //   child: PlayVideo(size),
+                  // ),
+                  Container(
+                    height: 500,
+                    width: size.width,
+                    color: backgroundColor,
+                    child: lastPortion(size),
+                  ),
+
+                  // Container(
+                  //   color: Colors.amber,
+                  //   height: 400, width: size.width,
+                  //   child: Expanded(
+                  //     child: Container(
+                  //       height: 120, width: size.width,
+                  //       color: Colors.greenAccent,
+                  //       child: ListView.builder(
+                  //           controller: _scrollController1,
+                  //           scrollDirection: Axis.horizontal,
+                  //           shrinkWrap: true,
+                  //           itemCount: appUis.length,
+                  //           padding: const EdgeInsets.symmetric(vertical: 20),
+                  //           itemBuilder: (context, index) {
+                  //             return Container(
+                  //               margin: const EdgeInsets.all(10),
+                  //               decoration: BoxDecoration(
+                  //                 color: Colors.deepOrange,
+                  //                 borderRadius: BorderRadius.circular(25),
+                  //                 border: Border.all(color: Colors.white),
+                  //               ),
+                  //               child: ClipRRect(
+                  //                 borderRadius: BorderRadius.circular(25),
+                  //                 child: CachedNetworkImage(
+                  //                   imageUrl: appUis[index], width: 500, fit: BoxFit.cover,
+                  //                   placeholder: (context, url) => const CircularProgressIndicator(),
+                  //                   errorWidget: (context, url, error) => const Icon(Icons.error),
+                  //                 ),
+                  //               ),
+                  //             );
+                  //           }),
+                  //     ),
+                  //   ),
+                  // ),
+                ],
               ),
             ),
-            // Container(
-            //   height: 800,
-            //   width: size.width,
-            //   color: backgroundColor,
-            //   child: PlayVideo(size),
-            // ),
-            Container(
-              height: 500,
-              width: size.width,
-              color: backgroundColor,
-              child: lastPortion(size),
-            ),
-
-            // Container(
-            //   color: Colors.amber,
-            //   height: 400, width: size.width,
-            //   child: Expanded(
-            //     child: Container(
-            //       height: 120, width: size.width,
-            //       color: Colors.greenAccent,
-            //       child: ListView.builder(
-            //           controller: _scrollController1,
-            //           scrollDirection: Axis.horizontal,
-            //           shrinkWrap: true,
-            //           itemCount: appUis.length,
-            //           padding: const EdgeInsets.symmetric(vertical: 20),
-            //           itemBuilder: (context, index) {
-            //             return Container(
-            //               margin: const EdgeInsets.all(10),
-            //               decoration: BoxDecoration(
-            //                 color: Colors.deepOrange,
-            //                 borderRadius: BorderRadius.circular(25),
-            //                 border: Border.all(color: Colors.white),
-            //               ),
-            //               child: ClipRRect(
-            //                 borderRadius: BorderRadius.circular(25),
-            //                 child: CachedNetworkImage(
-            //                   imageUrl: appUis[index], width: 500, fit: BoxFit.cover,
-            //                   placeholder: (context, url) => const CircularProgressIndicator(),
-            //                   errorWidget: (context, url, error) => const Icon(Icons.error),
-            //                 ),
-            //               ),
-            //             );
-            //           }),
-            //     ),
-            //   ),
-            // ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

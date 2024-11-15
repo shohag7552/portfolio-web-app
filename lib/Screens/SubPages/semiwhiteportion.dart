@@ -291,8 +291,7 @@ class _SemiWhitePortionState extends State<SemiWhitePortion> {
                               },
                               child: OnHoverButton(
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 20, vertical: 5),
+                                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: controller.showComplete.value == true

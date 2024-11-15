@@ -6,7 +6,7 @@ import 'package:protfolio_web_app/Controller/home_controller.dart';
 class PlayVideo extends StatelessWidget {
   final Size size;
 
-  PlayVideo(this.size);
+  const PlayVideo(this.size, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +29,14 @@ class PlayVideo extends StatelessWidget {
                         controller.chewieController!.videoPlayerController.value
                             .isInitialized
                     ? Chewie(controller: controller.chewieController!)
-                    : Column(
+                    : const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CircularProgressIndicator(),
                           SizedBox(
                             height: 10,
                           ),
-                          Text("loading"),
+                          Text("loading.."),
                         ],
                       ),
               ),
